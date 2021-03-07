@@ -337,6 +337,8 @@ class Order(ModelWithMetadata):
     def get_total_weight(self):
         return self.weight
 
+    def get_shipping_zone(self):
+        return self.shipping_method.shipping_zone.name
 
 class OrderLineQueryset(models.QuerySet):
     def digital(self):

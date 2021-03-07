@@ -289,7 +289,7 @@ class DraftOrderComplete(BaseMutation):
         for line in order:
             if line.variant.track_inventory:
                 try:
-                    allocate_stock(line, country, line.quantity)
+                    allocate_stock(line, order.get_shipping_zone(), line.quantity)
                 except InsufficientStock as exc:
                     raise ValidationError(
                         {

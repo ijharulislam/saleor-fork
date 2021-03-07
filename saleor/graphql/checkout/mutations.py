@@ -370,7 +370,7 @@ class CheckoutLinesAdd(BaseMutation):
         variants = cls.get_nodes_or_error(variant_ids, "variant_id", ProductVariant)
         quantities = [line.get("quantity") for line in lines]
 
-        check_lines_quantity(variants, quantities, checkout.get_country())
+        check_lines_quantity(variants, quantities, checkout.get_shipping_zone())
         validate_variants_available_for_purchase(variants)
 
         if variants and quantities:

@@ -80,7 +80,7 @@ def check_variant_in_stock(
         )
 
     if new_quantity > 0 and check_quantity:
-        check_stock_quantity(variant, checkout.get_country(), new_quantity)
+        check_stock_quantity(variant, checkout.get_shipping_zone(), new_quantity)
 
     return new_quantity, line
 
